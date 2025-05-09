@@ -1,7 +1,7 @@
 import bcrypt, { compare, hash } from 'bcrypt'
 import CryptoJS from 'crypto-js'
 import jwt from 'jsonwebtoken'
-
+ 
 //sign up
 
 import User from "../../db/models/user.model.js"
@@ -71,13 +71,15 @@ export const login=async(req,res,next) => {
 
 
 
-//getprofile
+//ةغprofile
 
-export const getprofile=async(req,res) => {
+export const my_profile=async(req,res) => {
     const user=req.user
     const phone=CryptoJS.AES.decrypt(user.phone,process.env.key).toString(CryptoJS.enc.Utf8)
     const mymessages=await messagemodel.find({user_id:req.user._id})
-     res.json({...req.user,phone,mymessages})
+     const host = req.get('host'); 
+     const protocol = req.protocol;
+     res.json({...req.user,phone,mymessages,my_profile_url:`${protocol}://${host}/users/share/${req.user._id}`})
 }
 
 
@@ -120,7 +122,7 @@ export const freeze_account=async(req,res,next) => {
   res.json({msg:'done'})
 }
 
-//share profile with peaple any one can view profile
+//share profile with  any one can view profile
 export const share_account=async(req,res,next) => {
  const{id}=req.params
  

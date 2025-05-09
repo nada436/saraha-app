@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import mongoose from "mongoose"
 
-export const conectiondb=() => {
-  mongoose.connect(process.env.mongoo_atles_url).then(() => {
+export const conectiondb=async() => {
+ await mongoose.connect(process.env.MONGO_ATLAS_URL).then(() => {
     console.log('connecting to db')
   }).catch(() => {
-    console.log('cant connect to db')
+    console.log("can't connect to db")
   })
 }
+

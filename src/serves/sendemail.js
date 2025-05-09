@@ -13,13 +13,12 @@ const transporter = nodemailer.createTransport({
 
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"nadosha 👻" <nada.nasr436@gmail.com>', 
+    from: '"nada 👻" <nada.nasr436@gmail.com>', 
     to: to,
-    subject: "Hello ✔", // Subject line
-    text: "Hello ?", // plain text body
+    subject: "account confirmation", 
+    text: "Please click the button below to confirm your account",
     html: html
   });
-
   if(info.accepted.length>0){
      return true
   }else{

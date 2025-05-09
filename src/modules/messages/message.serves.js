@@ -9,7 +9,7 @@ export const send_message=async(req,res,next) => {
      res.json({message:'message sent'})
    }
 
-//see user's recive messages only he owner cab see them
+//see user's recive messages only he owner can see them
 export const recive_messages=async(req,res,next) => {
    const user=await messagemodel.find({user_id:req.user._id})
    user.length>0? res.json(user): res.json({message:'no message yet'})
