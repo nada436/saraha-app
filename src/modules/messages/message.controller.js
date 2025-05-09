@@ -6,5 +6,5 @@ import { message_schema } from "./message.validation.js";
 import { authorization } from "../../mideleware/authorization.js";
 import { authantcation } from "../../mideleware/authantication.js";
 export const message_router=Router()
-message_router.post('/send',error_handel(validation(message_schema)),error_handel(send_message))
+message_router.post('/send/:user_id',error_handel(validation(message_schema)),error_handel(send_message))
 message_router.get('/mymessages',error_handel(authantcation),error_handel(recive_messages))
