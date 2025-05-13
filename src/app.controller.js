@@ -16,10 +16,10 @@ export const bootstrap=(app,express) => {
         res.status(200).json({msg:"hello from saraha app"})
     })
     app.use('*',(req,res) => {
-        res.status('404').json({msg:"page not found"})
+        res.status(404).json({msg:"page not found"})
     })
 
     app.use((error,req,res,next) => {
-       return res.status('404').json({errormessage:error.message,stack:error.stack})
+       return res.status(404).json({errormessage:error.message,stack:error.stack})
     })
 }

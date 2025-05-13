@@ -25,7 +25,9 @@ export const signup=async(req,res,next) => {
       const phone=CryptoJS.AES.encrypt(inputephone,process.env.key).toString()
       const token=jwt.sign({email},process.env.key)
       //send mail
-      myEmitter.emit("sendemail", {email:email,html:`<a href="http://localhost:3000/confirm/${token}">click me</a>`})
+       const host = req.get('host'); 
+       const protocol = req.protocol;
+      myEmitter.emit("sendemail", {email:email,html:`<a href="${protocol}://${host}/users/confirm/${token}">click me</a>`})
       
       
       await User.create({name,email,hashpassword,phone})
