@@ -81,7 +81,7 @@ export const my_profile=async(req,res) => {
     const mymessages=await messagemodel.find({user_id:req.user._id})
      const host = req.get('host'); 
      const protocol = req.protocol;
-     res.json({...req.user,phone,mymessages,my_profile_url:`${protocol}://${host}/messages/send/${req.user._id}`})
+     res.json({...req.user,phone,mymessages,my_profile_url:`${protocol}://${host}/users/share/${req.user._id}`})
 }
 
 
