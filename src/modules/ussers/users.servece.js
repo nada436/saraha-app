@@ -40,7 +40,7 @@ export const signup=async(req,res,next) => {
 
 
 //confirm
-export const confirm=async(req,res) => {
+export const confirm=async(req,res,next) => {
     const{token}=req.params
     const tokendata=jwt.verify(token,process.env.key)
     if(!tokendata?.email){
