@@ -66,7 +66,7 @@ export const login=async(req,res,next) => {
       return next(new Error("password id not correct"));
     }
     const token=jwt.sign({email},user.role=='user'?process.env.keyuser:process.env.keyadmin)
-    res.json(token)
+    res.status(200).json({token})
 }
 
 
