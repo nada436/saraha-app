@@ -10,7 +10,7 @@ export const user_route = Router();
 
 
 user_route.post('/signup',error_handel(validation(signup_schema)) ,error_handel(signup));
-user_route.get('/login',error_handel(validation(login_schema)), error_handel(login));
+user_route.post('/login',error_handel(validation(login_schema)), error_handel(login));
 user_route.get('/getprofile',error_handel(authantcation),error_handel(my_profile));
 user_route.get('/confirm/:token', error_handel(confirm));
 user_route.patch('/updateprofile',error_handel(validation(update_schema)),error_handel(authantcation),error_handel(update_profile));
