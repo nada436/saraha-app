@@ -10,12 +10,12 @@ const port = process.env.port;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173/", "http://localhost/"], // Frontend URL
-    origin: ["*"], // Frontend URL
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Allow credentials (cookies)
+    credentials: true,
   })
 );
+
 
 // Middleware
 app.use(express.json());
